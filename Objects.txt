@@ -1,0 +1,60 @@
+Objects And Its Internal Representation In JavaScript
+========================================================
+
+Objects, in JavaScript, is it’s most important data-type and forms the building blocks for modern JavaScript. 
+
+Objects are more complex and each object may contain any combination of these primitive data-types as well as reference data-types.
+An object, is a reference data type. Variables that are assigned a reference value are given a reference or a pointer to that value. That reference or 
+pointer points to the location in memory where the object is stored. 
+The variables don’t actually store the value.
+
+A JavaScript object is a collection of named values having state and behavior (properties and method).
+Example: Person, car, pen, bike, Personal Computer , Washing Machine etc.
+
+
+Objects and properties
+----------------------
+A JavaScript object has properties associated with it. A property of an object can be explained as a variable that is attached to the object. 
+Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. The properties of an object define the characteristics of the object. 
+You access the properties of an object with a simple dot-notation:
+
+objectName.propertyName
+
+
+JavaScript variables, both the object name and property name are case sensitive. 
+
+Unassigned properties of an object are undefined (and not null).
+we can define a property by assigning it a value.
+
+Ex:
+
+var car = new Object();
+car.name = "Benz";
+car.model = "xyz";
+car.year = 2000;
+
+Properties of JavaScript objects can also be accessed and set the values by using a bracket notation.
+console.log(car.name); // Benz
+car[model] = "123";  // now model will become 123 insted of xyz.
+
+The ways of creating Objects in javascript:
+---------------------------------------------
+1.Create JavaScript Object with Object Literal
+
+let bike = {name: "Bullet", maker:"Royal Enfield", engine:"937cc"};
+
+2.Create JavaScript Object with Constructor
+
+function Bike(name, maker) {
+   this.name = name;
+   this.maker = maker;
+}
+let bike = new Bike("Bullet", "Royal Enfield");
+
+3.Using the JavaScript Keyword new
+
+let bike = new Object();
+bike.name = "Bullet";
+bike.maker = "Royal Enfield";
+4.Objects can also be created using the Object.create() method.
+

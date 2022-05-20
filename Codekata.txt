@@ -1,0 +1,2 @@
+I have practiced coding Problems in codekata.
+Till now I have completed Input/Output and Absolute Beginner section. And working on Basics and Mathematics section.

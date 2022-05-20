@@ -1,0 +1,79 @@
+Write a blog on Difference between HTTP1.1 vs HTTP2
+Write a blog about objects and its internal representation in Javascript
+codekata practice
+
+
+https://github.com/reach2arunprakash/javascript-101/tree/master/ppt
+
+HTTP:
+-----
+The Hypertext Transfer Protocol (or) HTTP, is an application protocol that has been the de facto standard for communication on the World Wide Web since its invention in 1989.
+It was designed for communication between web browsers and web servers, but it can also be used for other purposes.
+
+HTTP/1.1
+---------
+Developed by Timothy Berners-Lee in 1989 as a communication standard for the World Wide Web, HTTP is a top-level application protocol that exchanges information between a client 
+computer and a local or remote web server. 
+In this process, a client sends a text-based request to a server by calling a method like GET or POST. In response, the server sends a resource like an HTML page back to the client.
+
+For example, let’s say you are visiting a website at the domain www.example.com. 
+When you navigate to this URL, the web browser on your computer sends an HTTP request in the form of a text-based message.
+
+GET /index.html HTTP/1.1
+Host: www.example.com
+
+The request uses the GET method, which asks for data from the host server listed after Host:. In response to this request, the example.com web server returns an HTML page to the requesting client, 
+in addition to any images, stylesheets, or other resources called for in the HTML.
+
+Not all of the resources are returned to the client in the first call for data. 
+The requests and responses will go back and forth between the server and client until the web browser has received all the resources necessary to render the contents of the HTML page on your screen.
+
+HTTP/2:
+-------
+HTTP/2 was created to get around a number of problems arising from the unstructured evolution of HTTP/1.1, most of them performance-related.
+
+Many of the issues arose due to the inherent limitations of HTTP/1.1, boiling down to response times increasing with traffic.
+
+HTTP Head-of-line blocking (HTTP HoL) — HTTP HoL causes an increase in response time when a sequence of packets is held up by a slow/large packet clogging the artery ahead of them. 
+
+Protocol overheads — Server and client exchange additional request and response metadata, with repeated transmissions of headers and cookies building up and slowing down responses.
+
+TCP slow start — As a congestion control measure, the protocol repeatedly probes the network to figure out the available capacity; before managing to reach full capacity, the multiple small transfers can cause lag.
+
+Developers tried to address these problems and limitations with workarounds such as domain sharding, pipelining, and using “cookieless” domains, but these often led to compatibility and interoperability issues. 
+Clearly, the aging HTTP/1.1 standard needed updating.
+
+In 2009, Google announced SPDY, an experimental protocol, as a structured approach to solving the problems with HTTP/1.x. The HTTP Working Group noted the success Google had with meeting increased performance goals with SPDY. In November 2012, a call for proposal 
+was made for HTTP/2, with the SPDY specification adopted as the starting point.
+
+Main goals of developing HTTP/2:
+---------------------------------
+Protocol negotiation mechanism — protocol electing, eg. HTTP/1.1, HTTP/2 or other.
+High-level compatibility with HTTP/1.1 — methods, status codes, URIs and header fields.
+Page load speed improvements trough:
+Compression of request headers
+Binary protocol
+HTTP/2 Server Push
+Request multiplexing over a single TCP connection
+Request pipelining
+HOL blocking (Head-of-line) — Package blocking
+
+Blow are the major differences between HTTP/2 and HTTP/1.1 that impact performance:
+Multiplexing:
+-------------
+HTTP/1.1 loads resources one after the other, so if one resource cannot be loaded, it blocks all the other resources behind it. 
+In contrast, HTTP/2 is able to use a single TCP connection to send multiple streams of data at once so that no one resource blocks any other resource.
+HTTP/2 does this by splitting data into binary-code messages and numbering these messages so that the client knows which stream each binary message belongs to.
+
+Server push:
+------------ 
+Typically, a server only serves content to a client device if the client asks for it. However, this approach is not always practical for modern webpages, 
+which often involve several dozen separate resources that the client must request. HTTP/2 solves this problem by allowing a server to "push" content to a 
+client before the client asks for it. The server also sends a message letting the client know what pushed content to expect – like if Bob had sent Alice a 
+Table of Contents of his novel before sending the whole thing.
+
+Header compression:
+-------------------- 
+Small files load more quickly than large ones. To speed up web performance, both HTTP/1.1 and HTTP/2 compress HTTP messages to make them smaller. However, 
+HTTP/2 uses a more advanced compression method called HPACK that eliminates redundant information in HTTP header packets. This eliminates a few bytes from every HTTP packet. 
+Given the volume of HTTP packets involved in loading even a single webpage, those bytes add up quickly, resulting in faster loading.
